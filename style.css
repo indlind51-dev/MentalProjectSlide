@@ -1,0 +1,1133 @@
+@font-face {
+    font-family: "OMORI";
+    src: url("./font/OMORI_GAME2.ttf") format("truetype");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background: #050505;
+    color: white;
+    font-family: "OMORI", sans-serif;
+    overflow: hidden;
+}
+
+/* =========================
+   SCENE
+========================= */
+
+.scene {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: #050505;
+
+    animation: sceneAppear 2s ease forwards;
+}
+
+/* =========================
+   TALI + LAMPU
+========================= */
+
+.lamp-group {
+    position: absolute;
+
+    top: 0;
+    left: 26px;
+
+    width: 70px;
+    height: 220px;
+
+    transform-origin: top center;
+
+    animation: lampSwing 4s ease-in-out infinite;
+}
+
+
+/* =========================
+   TALI
+========================= */
+
+.rope {
+    position: absolute;
+
+    top: 0;
+    left: 23px;
+
+    width: 20px;
+    height: 160px;
+
+    object-fit: contain;
+}
+
+
+/* =========================
+   LAMPU
+========================= */
+
+.lamp-wrapper {
+    position: absolute;
+
+    top: 145px;
+    left: 10;
+
+    width: 70px;
+    height: 70px;
+}
+
+.lamp {
+    width: 70px;
+    height: 70px;
+
+    object-fit: contain;
+
+    position: relative;
+    z-index: 2;
+}
+
+/* Cahaya lampu */
+
+.lamp-glow {
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: radial-gradient(
+        circle,
+        rgba(255,255,255,0.18),
+        rgba(255,255,255,0.05) 35%,
+        transparent 70%
+    );
+
+    filter: blur(8px);
+
+    animation: glow 2.5s ease-in-out infinite;
+
+    z-index: 1;
+}
+
+/* =========================
+   KARAKTER
+========================= */
+
+.character {
+    position: absolute;
+
+    right: 5%;
+    bottom: 2%;
+
+    width: 230px;
+
+    animation: breathing 4s ease-in-out infinite;
+
+    filter: brightness(0.95);
+}
+
+/* =========================
+   TEXT
+========================= */
+
+.intro {
+    position: absolute;
+
+    left: 32%;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    max-width: 450px;
+
+    animation: textAppear 2s ease 1s both;
+}
+
+.small-text {
+    font-size: 23px;
+    letter-spacing: 6px;
+
+    color: #888;
+
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: clamp(80px, 11vw, 160px);
+
+    font-weight: normal;
+
+    letter-spacing: 5px;
+
+    line-height: 1.1;
+
+    margin-bottom: 25px;
+}
+
+.description {
+    color: #aaa;
+
+    font-size: 25px;
+
+    line-height: 1.8;
+
+    margin-bottom: 45px;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.enter {
+    display: inline-block;
+
+    color: white;
+
+    text-decoration: none;
+
+    border: 1px solid #555;
+
+    padding: 14px 28px;
+
+    font-size: 20px;
+
+    letter-spacing: 3px;
+
+    transition: 0.4s ease;
+}
+
+.enter:hover {
+    background: white;
+    color: black;
+
+    border-color: white;
+
+    transform: translateX(8px);
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes sceneAppear {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+@keyframes ropeSwing {
+
+    0%,
+    100% {
+        transform: rotate(-2deg);
+    }
+
+    50% {
+        transform: rotate(2deg);
+    }
+
+}
+
+@keyframes lampSwing {
+
+    0%,
+    100% {
+        transform: rotate(-3deg);
+    }
+
+    50% {
+        transform: rotate(3deg);
+    }
+
+}
+
+@keyframes glow {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+
+}
+
+@keyframes breathing {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+
+}
+
+@keyframes textAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(-50%) translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+    }
+
+}
+
+/* =========================
+   HALAMAN KEGELAPAN
+========================= */
+
+.dark-page {
+    position: relative;
+
+    width: 100vw;
+    height: 100vh;
+
+    overflow: hidden;
+
+    background: #050505;
+    color: white;
+}
+
+
+/* =========================
+   IBLIS
+========================= */
+.demon {
+    position: absolute;
+
+    right: 4%;
+    top: 50%;
+
+    width: 50vw;
+    height: 90vh;
+
+    transform: translateY(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 1;
+
+    animation: demonAppear 2s ease forwards;
+}
+
+.demon img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+
+/* =========================
+   TEKS
+========================= */
+
+.dark-content {
+    position: absolute;
+
+    left: 7%;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 48%;
+
+    z-index: 2;
+
+    animation: darkContentAppear 1.5s ease forwards;
+}
+
+.dark-label {
+    font-size: 22px;
+
+    letter-spacing: 6px;
+
+    color: #888;
+
+    margin-bottom: 25px;
+}
+
+.dark-content h1 {
+    font-size: clamp(80px, 10vw, 160px);
+
+    font-weight: normal;
+
+    letter-spacing: 5px;
+
+    line-height: 1.1;
+
+    margin-bottom: 35px;
+}
+
+.dark-text {
+    max-width: 600px;
+
+    color: #aaa;
+
+    font-size: 25px;
+
+    line-height: 1.8;
+
+    margin-bottom: 45px;
+}
+
+.dark-text span {
+    color: #888;
+
+    transition: 0.3s ease;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.back-button {
+    display: inline-block;
+
+    padding: 14px 28px;
+
+    border: 1px solid #444;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    transition: 0.4s ease;
+}
+
+.back-button:hover {
+    background: white;
+
+    color: black;
+
+    border-color: white;
+}
+
+
+/* =========================
+   ANIMASI IBLIS
+========================= */
+
+@keyframes demonAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(-50%)
+            translateX(60px)
+            scale(0.95);
+    }
+
+    to {
+        opacity: 0.9;
+
+        transform:
+            translateY(-50%)
+            translateX(0)
+            scale(1);
+    }
+
+}
+
+
+/* =========================
+   ANIMASI TEKS
+========================= */
+
+@keyframes darkContentAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(-50%)
+            translateX(-40px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(-50%)
+            translateX(0);
+    }
+
+}
+
+/* =================================
+   Rain
+   SCROLL STORY
+================================= */
+
+.dark-scroll {
+    width: 100%;
+    background: #030303;
+    color: white;
+}
+
+
+/* =================================
+   SETIAP BAGIAN
+================================= */
+
+.dark-section {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+
+    padding: 8vw;
+
+    overflow: hidden;
+}
+
+/* =================================
+   SCARRY — BAGIAN 1
+================================= */
+
+.knife-section {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.knife-image {
+    position: absolute;
+    left: 4%;
+    right: auto;
+    top: 48%;
+    width: 32vw;
+    height: 70vh;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.knife-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    filter:
+        grayscale(100%)
+        contrast(115%);
+    opacity: 0.9;
+}
+
+/* =================================
+   TEKS
+================================= */
+
+.knife-section .section-text {
+    position: relative;
+    margin-left: 45%;
+    width: 48%;
+    z-index: 2;
+}
+.section-label {
+    font-size: 16px;
+    letter-spacing: 6px;
+    color: #888;
+    margin-bottom: 35px;
+}
+
+.section-text h1 {
+    font-size: clamp(80px, 11vw, 160px);
+    font-weight: 300;
+    line-height: 0.7;
+    letter-spacing: 4px;
+    margin-bottom: 35px;
+}
+
+.section-description {
+    max-width: 650px;
+    color: #bbb;
+    font-size: 24px;
+    line-height: 1.7;
+}
+
+/* =================================
+   SCROLL HINT
+================================= */
+
+.scroll-hint {
+    position: absolute;
+
+    left: 50%;
+    bottom: 35px;
+
+    transform: translateX(-50%);
+
+    text-align: center;
+
+    color: #555;
+
+    font-size: 18px;
+
+    animation: scrollHint 2s ease-in-out infinite;
+}
+
+
+.scroll-hint span {
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    color: #666;
+}
+
+
+/* =================================
+   BAGIAN 1
+================================= */
+
+.section-one {
+    background:
+        radial-gradient(
+            circle at 75% 50%,
+            rgba(80, 0, 0, 0.08),
+            transparent 35%
+        );
+}
+
+
+/* =================================
+   BAGIAN 2
+================================= */
+
+.section-two {
+    background:
+        radial-gradient(
+            circle at 25% 50%,
+            rgba(120, 0, 0, 0.07),
+            transparent 35%
+        );
+}
+
+.rain-section {
+    min-height: 100vh;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    background: #050505;
+}
+
+.rain-text {
+    position: relative;
+
+    width: 55%;
+    margin-left: 8%;
+
+    z-index: 2;
+}
+
+.rain-label {
+    font-size: 18px;
+    letter-spacing: 6px;
+
+    color: #888;
+
+    margin-bottom: 30px;
+}
+
+.rain-text h1 {
+    font-size: clamp(90px, 11vw, 160px);
+
+    font-weight: 300;
+
+    line-height: 0.95;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 45px;
+}
+
+.rain-text h1 span {
+    color: #8b1515;
+}
+
+.rain-description {
+    color: #bbb;
+
+    font-size: 24px;
+
+    line-height: 1.8;
+
+    max-width: 650px;
+}
+
+.rain-quote {
+    margin-top: 40px;
+
+    color: #777;
+
+    font-size: 18px;
+
+    letter-spacing: 3px;
+}
+
+
+/* GAMBAR */
+
+.rain-image {
+    position: absolute;
+
+    right: 3%;
+
+    top: 48%;
+
+    width: 30vw;
+    height: 65vh;
+
+    transform: translateY(-50%);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 1;
+}
+
+.rain-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    filter:
+        grayscale(100%)
+        contrast(115%);
+
+    opacity: 0.9;
+}
+
+/* =================================
+   BAGIAN 3
+================================= */
+/* =========================
+   BAGIAN 3 — MASA LALU
+========================= */
+
+.past-section {
+    min-height: 100vh;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    background: #050505;
+}
+
+
+/* GAMBAR */
+.past-image {
+    position: absolute;
+
+    left: 5%;
+    top: 50%;
+
+    width: 40vw;
+    height: 60vh;
+
+    transform: translateY(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 1;
+}
+
+.past-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    object-position: center;
+
+    opacity: 0.85;
+
+    filter:
+        grayscale(100%)
+        contrast(120%);
+
+    animation: pastAppear 2s ease forwards;
+}
+
+
+/* TEKS */
+
+.past-text {
+    position: absolute;
+
+    right: 8%;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 40%;
+
+    z-index: 2;
+}
+
+.past-text h1 {
+    font-size: clamp(80px, 10vw, 150px);
+
+    font-weight: 300;
+
+    line-height: 0.65;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 35px;
+}
+
+.past-text h1 span {
+    color: #777;
+}
+
+.past-text .section-description {
+    color: #999;
+
+    font-size: 25px;
+
+    line-height: 1.8;
+
+    max-width: 400px;
+}
+
+
+/* ANIMASI */
+
+@keyframes pastAppear {
+
+    from {
+        opacity: 0;
+
+        transform: translateX(-80px);
+    }
+
+    to {
+        opacity: 0.85;
+
+        transform: translateX(0);
+    }
+
+}
+
+/* =================================
+   BAGIAN 4
+================================= */
+
+.section-four {
+    min-height: 100vh;
+
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+.final-message {
+    max-width: 800px;
+}
+
+
+.final-message .section-description {
+    margin: 0 auto 45px;
+}
+
+
+/* =================================
+   BUTTON
+================================= */
+
+.next-button {
+    display: inline-block;
+
+    padding: 15px 30px;
+
+    border: 1px solid #551111;
+
+    color: #aaa;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    transition: 0.4s ease;
+}
+
+
+.next-button:hover {
+    background: #8b1515;
+
+    border-color: #8b1515;
+
+    color: white;
+
+    box-shadow:
+        0 0 25px rgba(139, 21, 21, 0.3);
+}
+/* =========================
+   SCROLL PAGE
+========================= */
+
+body.scroll-page {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+
+/* =================================
+   ANIMASI
+================================= */
+
+@keyframes sectionAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+@keyframes scrollHint {
+
+    0%,
+    100% {
+        opacity: 0.3;
+
+        transform:
+            translateX(-50%)
+            translateY(0);
+    }
+
+    50% {
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            translateY(8px);
+    }
+
+}
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+
+@media (min-width: 769px) {
+    .intro { left: clamp(24%, 31vw, 34%); width: min(470px, 40vw); }
+    .intro h1 { font-size: clamp(72px, 8vw, 132px); }
+    .description { font-size: clamp(19px, 1.45vw, 24px); }
+    .dark-content { left: clamp(5%, 7vw, 9%); width: min(48%, 650px); }
+    .dark-content h1 { font-size: clamp(72px, 8vw, 132px); }
+    .dark-text { font-size: clamp(19px, 1.45vw, 24px); max-width: 560px; }
+    .story-section { padding-left: clamp(6vw, 8vw, 10vw); padding-right: clamp(6vw, 8vw, 10vw); }
+    .section-text h1, .section-text h2 { font-size: clamp(68px, 8.2vw, 132px); line-height: .76; }
+    .section-description { font-size: clamp(18px, 1.35vw, 23px); max-width: 590px; }
+    .knife-image, .rain-image { width: clamp(300px, 29vw, 500px); height: clamp(430px, 62vh, 680px); }
+    .past-image { width: clamp(390px, 38vw, 620px); height: clamp(390px, 58vh, 650px); }
+    .past-text { right: clamp(5%, 7vw, 9%); width: min(43%, 570px); }
+    .past-text h1 { font-size: clamp(66px, 7.2vw, 112px); }
+    .past-text .section-description { font-size: clamp(18px, 1.3vw, 22px); }
+}
+
+@media (max-width: 768px) {
+    .page, .story-section { min-height: 100svh; }
+    .lamp-group { left: 10px; transform: scale(.82); transform-origin: top left; }
+    .character { width: clamp(110px, 31vw, 175px); right: 2%; bottom: 3%; opacity: .85; }
+    .intro { left: 9%; top: 49%; width: 82%; max-width: 520px; }
+    .small-text { font-size: clamp(12px, 3.2vw, 17px); letter-spacing: 3px; margin-bottom: 14px; }
+    .intro h1 { font-size: clamp(58px, 17vw, 100px); line-height: .95; margin-bottom: 18px; }
+    .description { font-size: clamp(16px, 4.6vw, 20px); line-height: 1.55; margin-bottom: 28px; }
+    .enter { padding: 11px 20px; font-size: 15px; letter-spacing: 2px; }
+    .dark-page { display: block; }
+    .demon { width: 72vw; height: 48vh; right: -16%; top: 50%; opacity: .48; }
+    .dark-content { left: 8%; top: 61%; width: 84%; }
+    .dark-label { font-size: clamp(12px, 3.3vw, 16px); letter-spacing: 4px; margin-bottom: 16px; }
+    .dark-content h1 { font-size: clamp(55px, 17vw, 95px); line-height: .9; margin-bottom: 22px; }
+    .dark-text { font-size: clamp(16px, 4.5vw, 19px); line-height: 1.55; margin-bottom: 28px; max-width: 100%; }
+    .story-section { padding: 9% 8%; display: flex; align-items: center; }
+    .section-text { width: 100%; max-width: 100%; }
+    .section-label { font-size: clamp(11px, 3vw, 14px); letter-spacing: 4px; margin-bottom: 20px; }
+    .section-text h1, .section-text h2 { font-size: clamp(52px, 15vw, 88px); line-height: .8; letter-spacing: 2px; margin-bottom: 24px; }
+    .section-description { font-size: clamp(16px, 4.3vw, 19px); line-height: 1.6; max-width: 100%; }
+    .knife-image { width: 44vw; max-width: 230px; height: 34vh; right: -2%; top: 50%; opacity: .42; }
+    .rain-image { width: 40vw; max-width: 250px; height: 34vh; right: -3%; top: 38%; opacity: .45; }
+    .rain-description { font-size: clamp(12px, 3vw, 15px); letter-spacing: 4px; margin-bottom: 22px; }
+    .past-image { width: 58vw; max-width: 300px; height: 34vh; left: 45%; top: 48%; opacity: .38; }
+    .past-text { right: 8%; top: 62%; width: 84%; max-width: 520px; padding: 0; }
+    .past-text .section-label { font-size: clamp(11px, 3vw, 14px); letter-spacing: 4px; margin-bottom: 16px; }
+    .past-text h1 { font-size: clamp(52px, 14.5vw, 88px); line-height: .8; letter-spacing: 2px; margin-bottom: 22px; }
+    .past-text .section-description { font-size: clamp(16px, 4.1vw, 19px); line-height: 1.55; max-width: 100%; }
+    .section-four { padding: 10% 8%; }
+    .final-message { width: 100%; max-width: 560px; }
+    .final-message .section-description { margin-bottom: 30px; }
+    .back-button { padding: 12px 22px; font-size: 10px; letter-spacing: 3px; }
+    .scroll-hint { bottom: 20px; font-size: 16px; }
+    .scroll-hint span { font-size: 8px; letter-spacing: 3px; }
+}
+
+@media (max-width: 420px) {
+    .intro { top: 51%; }
+    .character { width: 112px; bottom: 2%; }
+    .intro h1 { font-size: clamp(54px, 18vw, 72px); }
+    .description { font-size: 16px; }
+    .dark-content { top: 63%; }
+    .dark-content h1 { font-size: clamp(50px, 17vw, 72px); }
+    .dark-text { font-size: 15px; }
+    .knife-image { width: 42vw; height: 29vh; top: 40%; left: 68% }
+    .rain-image { width: 42vw; height: 29vh; top: 40%; left: 68% }
+    .past-image { width: 55vw; height: 29vh; top: 50%; left: 46% }
+    .past-text { top: 64%; }
+    .past-text h1 { font-size: clamp(48px, 14vw, 68px); }
+    .past-text .section-description { font-size: 15px; }
+}
+
+@media (max-width: 900px) and (orientation: landscape) {
+    .page, .story-section { min-height: 100svh; }
+    .intro { left: 12%; top: 50%; width: 55%; }
+    .intro h1 { font-size: clamp(48px, 9vw, 78px); }
+    .description { font-size: 15px; line-height: 1.4; margin-bottom: 18px; }
+    .character { width: 120px; }
+    .demon { width: 42vw; height: 70vh; right: 0; top: 50%; opacity: .5; }
+    .dark-content { top: 50%; left: 7%; width: 55%; }
+    .dark-content h1 { font-size: clamp(50px, 8vw, 82px); }
+    .dark-text { font-size: 15px; line-height: 1.4; margin-bottom: 18px; }
+    .story-section { padding: 7%; }
+    .section-text h1, .section-text h2 { font-size: clamp(50px, 8vw, 82px); }
+    .section-description, .past-text .section-description { font-size: 15px; line-height: 1.45; }
+    .knife-image{ width: 25vw; height: 65vh; right: 4%; top: 50%; }
+    .rain-image { width: 25vw; height: 65vh; right: 4%; top: 50%; }
+    .past-image { width: 35vw; height: 60vh; left: 3%; top: 50%; }
+    .past-text { right: 7%; top: 50%; width: 48%; }
+    .past-text h1 { font-size: clamp(48px, 7vw, 76px); margin-bottom: 20px; }
+    .scroll-hint { bottom: 12px; font-size: 13px; }
+}
+
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+
+/* Bagian 2 / 3: gambar iblis */
+.demon.reveal-right {
+    transform: translateY(-50%) translateX(60px) scale(0.95);
+}
+
+.demon.reveal-right.show {
+    transform: translateY(-50%) translateX(0) scale(1) !important;
+}
+
+/* Bagian 3: gambar kiri */
+.past-image.reveal-left {
+    transform: translateY(-50%) translateX(-90px);
+}
+
+.past-image.reveal-left.show {
+    transform: translateY(-50%) translateX(0) !important;
+}
+
+/* Bagian 3: teks kanan */
+.past-text.reveal-right {
+    transform: translateY(-50%) translateX(90px);
+}
+
+.past-text.reveal-right.show {
+    transform: translateY(-50%) translateX(0) !important;
+}
+
+/* Bagian 1: gambar */
+.knife-image.reveal-right {
+    transform: translateY(-50%) translateX(90px);
+}
+
+.knife-image.reveal-right.show {
+    transform: translateY(-50%) translateX(0) !important;
+}
+
+/* Bagian 2: gambar */
+.rain-image.reveal-right {
+    transform: translateY(-50%) translateX(90px);
+}
+
+.rain-image.reveal-right.show {
+    transform: translateY(-50%) translateX(0) !important;
+}
+
+.final-message.reveal.show {
+    transform: translate(0) !important;
+}
